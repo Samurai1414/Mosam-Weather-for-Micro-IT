@@ -94,7 +94,7 @@ function App() {
     minHeight: '100vh',
     maxWidth: '1200px',
     margin: '0 auto',
-    padding: '20px',
+    padding: '10px',
     position: 'relative',
   }
 
@@ -103,6 +103,9 @@ function App() {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '30px',
+    flexWrap: 'wrap',
+    gap: '15px',
+    padding: '0 10px',
   }
 
   const searchBarStyle = {
@@ -112,8 +115,10 @@ function App() {
     borderRadius: '20px',
     padding: '8px 16px',
     flex: '1',
-    maxWidth: '300px',
+    width: '100%',
+    maxWidth: '400px',
     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    margin: '0 20px',
   }
 
   const searchInputStyle = {
@@ -155,14 +160,15 @@ function App() {
 
   const contentContainerStyle = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
     gap: '20px',
     marginTop: '20px',
+    padding: '0 10px',
   }
 
   const sidebarStyle = {
-    width: '80px',
-    position: 'absolute',
+    width: '60px',
+    position: 'fixed',
     left: '0',
     top: '0',
     bottom: '0',
@@ -171,7 +177,17 @@ function App() {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '20px 0',
-    boxShadow: '2px 0 10px rgba(0,0,0,0.05)'
+    boxShadow: '2px 0 10px rgba(0,0,0,0.05)',
+    zIndex: 1000,
+    '@media (max-width: 768px)': {
+      width: '100%',
+      height: '60px',
+      bottom: '0',
+      top: 'auto',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      padding: '0 10px',
+    }
   }
 
   const logoStyle = {
@@ -196,8 +212,12 @@ function App() {
   }
 
   const mainContentStyle = {
-    marginLeft: '80px',
+    marginLeft: '60px',
     flex: 1,
+    '@media (max-width: 768px)': {
+      marginLeft: '0',
+      marginBottom: '60px',
+    }
   }
 
   const calendarStyle = {
@@ -241,19 +261,14 @@ function App() {
           style={activeNav === 'settings' ? activeNavIconStyle : navIconStyle}
           onClick={() => handleNavClick('settings')}
         >⚙️</div>
-        <div 
-          style={activeNav === 'notes' ? activeNavIconStyle : navIconStyle}
-          onClick={() => handleNavClick('notes')}
-        >📝</div>
       </div>
       
       <div style={mainContentStyle}>
         <header style={headerStyle}>
-          
           <div style={searchBarStyle}>
             <input 
               type="text" 
-              placeholder="Search here..." 
+              placeholder="Search for a city..." 
               style={searchInputStyle} 
               value={city}
               onChange={(e) => setCity(e.target.value)}
