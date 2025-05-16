@@ -7,6 +7,7 @@ import HourlyForecast from './components/HourlyForecast'
 import DailyHumidity from './components/DailyHumidity'
 import CurrentLocation from './components/CurrentLocation'
 import Loading from './components/Loading'
+import config from './config'
 
 function App() {
   const [weather, setWeather] = useState(null)
@@ -23,7 +24,7 @@ function App() {
     setLoading(true)
     setError(null)
     try {
-      const response = await fetch(`/api/weather?city=${encodeURIComponent(cityName)}`)
+      const response = await fetch(`${config.API_URL}/api/weather?city=${encodeURIComponent(cityName)}`)
       if (!response.ok) {
         const errorData = await response.json()
         throw new Error(errorData.message || 'Failed to fetch weather data')
@@ -44,7 +45,7 @@ function App() {
       const cities = ['Mumbai', 'Kolkata'];
       const citiesData = await Promise.all(
         cities.map(async (cityName) => {
-          const response = await fetch(`/api/weather?city=${encodeURIComponent(cityName)}`);
+          const response = await fetch(`${config.API_URL}/api/weather?city=${encodeURIComponent(cityName)}`);
           if (!response.ok) return null;
           const data = await response.json();
           return {
@@ -74,6 +75,11 @@ function App() {
 
   const handleNavClick = (navItem) => {
     setActiveNav(navItem);
+    
+    // Close calendar if open
+    if (showCalendar) {
+      setShowCalendar(false);
+    }
   };
 
   const toggleCalendar = () => {
@@ -246,7 +252,7 @@ function App() {
           <div style={userProfileStyle}>
             <h3>Hello, {username}</h3>
             <div style={avatarStyle}>
-              <img src="\profile.png" alt="User" width="40" height="40" />
+              <img src="https://via.placeholder.com/40" alt="User" width="40" height="40" />
             </div>
           </div>
           

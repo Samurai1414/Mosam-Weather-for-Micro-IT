@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import config from '../config';
 
 const HourlyForecast = () => {
   const [hourlyData, setHourlyData] = useState([
@@ -16,7 +17,7 @@ const HourlyForecast = () => {
     const fetchHourlyData = async () => {
       try {
         // Fetch forecast data from API
-        const response = await fetch('/api/forecast');
+        const response = await fetch(`${config.API_URL}/api/forecast`);
         if (!response.ok) throw new Error('Failed to fetch forecast data');
         
         const data = await response.json();
