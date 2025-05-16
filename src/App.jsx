@@ -19,7 +19,7 @@ function App() {
   const [selectedLocation, setSelectedLocation] = useState("Dhaka, Bangladesh")
   const [activeNav, setActiveNav] = useState('home')
   const [showCalendar, setShowCalendar] = useState(false)
-  
+
   const fetchWeather = async (cityName) => {
     setLoading(true)
     setError(null)
@@ -249,12 +249,6 @@ function App() {
       
       <div style={mainContentStyle}>
         <header style={headerStyle}>
-          <div style={userProfileStyle}>
-            <h3>Hello, {username}</h3>
-            <div style={avatarStyle}>
-              <img src="https://via.placeholder.com/40" alt="User" width="40" height="40" />
-            </div>
-          </div>
           
           <div style={searchBarStyle}>
             <input 
@@ -267,7 +261,7 @@ function App() {
             />
             <span onClick={() => handleSearch(city)} style={{cursor: 'pointer'}}>🔍</span>
           </div>
-          
+      
           <div style={iconsBarStyle}>
             <span style={iconStyle} onClick={toggleCalendar}>📅</span>
             <span style={iconStyle}>🔔</span>
