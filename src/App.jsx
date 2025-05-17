@@ -96,6 +96,9 @@ function App() {
     margin: '0 auto',
     padding: '10px',
     position: 'relative',
+    '@media (max-width: 768px)': {
+      padding: '5px',
+    }
   }
 
   const headerStyle = {
@@ -105,38 +108,73 @@ function App() {
     marginBottom: '30px',
     flexWrap: 'wrap',
     gap: '15px',
-    padding: '0 10px',
+    padding: '10px',
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+    '@media (max-width: 768px)': {
+      marginBottom: '15px',
+      padding: '8px',
+      justifyContent: 'center',
+    }
   }
 
   const searchBarStyle = {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: '20px',
-    padding: '8px 16px',
+    backgroundColor: '#f5f6fa',
+    borderRadius: '25px',
+    padding: '12px 20px',
     flex: '1',
     width: '100%',
     maxWidth: '400px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
     margin: '0 20px',
+    '@media (max-width: 768px)': {
+      margin: '0 5px',
+      padding: '10px 15px',
+      maxWidth: '100%',
+    }
   }
 
   const searchInputStyle = {
     border: 'none',
     outline: 'none',
     width: '100%',
-    fontSize: '14px',
+    fontSize: '15px',
+    backgroundColor: 'transparent',
+    '@media (max-width: 768px)': {
+      fontSize: '14px',
+    }
   }
 
   const iconsBarStyle = {
     display: 'flex',
     gap: '20px',
+    '@media (max-width: 768px)': {
+      gap: '15px',
+    }
   }
 
   const iconStyle = {
     width: '24px',
     height: '24px',
     cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f5f6fa',
+    borderRadius: '50%',
+    padding: '8px',
+    transition: 'all 0.2s ease',
+    ':hover': {
+      backgroundColor: '#e8e9ec',
+    },
+    '@media (max-width: 768px)': {
+      width: '20px',
+      height: '20px',
+      padding: '6px',
+    }
   }
 
   const userProfileStyle = {
@@ -164,10 +202,16 @@ function App() {
     gap: '20px',
     marginTop: '20px',
     padding: '0 10px',
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '15px',
+      padding: '0 5px',
+      marginTop: '15px',
+    }
   }
 
   const sidebarStyle = {
-    width: '60px',
+    width: '70px',
     position: 'fixed',
     left: '0',
     top: '0',
@@ -181,55 +225,82 @@ function App() {
     zIndex: 1000,
     '@media (max-width: 768px)': {
       width: '100%',
-      height: '60px',
+      height: '65px',
       bottom: '0',
       top: 'auto',
       flexDirection: 'row',
       justifyContent: 'space-around',
-      padding: '0 10px',
+      padding: '8px 15px',
+      boxShadow: '0 -2px 10px rgba(0,0,0,0.05)',
     }
   }
 
   const logoStyle = {
-    color: '#ff7e45',
-    fontSize: '24px',
+    fontSize: '28px',
     fontWeight: 'bold',
     marginBottom: '40px',
+    '@media (max-width: 768px)': {
+      fontSize: '24px',
+      marginBottom: '0',
+    }
   }
 
   const navIconStyle = {
-    width: '24px',
-    height: '24px',
+    width: '40px',
+    height: '40px',
     margin: '15px 0',
     cursor: 'pointer',
     color: '#a0a0a0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '12px',
+    transition: 'all 0.2s ease',
+    ':hover': {
+      backgroundColor: '#f5f6fa',
+    },
+    '@media (max-width: 768px)': {
+      margin: '0',
+      width: '35px',
+      height: '35px',
+    }
   }
 
   const activeNavIconStyle = {
     ...navIconStyle,
     color: '#ff7e45',
+    backgroundColor: '#fff1ec',
     position: 'relative',
+    ':hover': {
+      backgroundColor: '#ffe4db',
+    }
   }
 
   const mainContentStyle = {
-    marginLeft: '60px',
+    marginLeft: '70px',
     flex: 1,
     '@media (max-width: 768px)': {
       marginLeft: '0',
-      marginBottom: '60px',
+      marginBottom: '75px',
     }
   }
 
   const calendarStyle = {
     position: 'absolute',
     top: '70px',
-    right: '80px',
+    right: '20px',
     width: '300px',
     backgroundColor: 'white',
     boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-    borderRadius: '10px',
-    padding: '15px',
+    borderRadius: '15px',
+    padding: '20px',
     zIndex: 100,
+    '@media (max-width: 768px)': {
+      width: '90%',
+      right: '5%',
+      top: '60px',
+      padding: '15px',
+    }
   }
 
   const getCurrentDate = () => {
